@@ -12,11 +12,18 @@ def main():
     output_dir = '/<Jekyll root>/_ToMicroBlog'
 
     # Replace with your domain.
-    full_domain = 'https://www.example.me'
+    full_domain = 'https://www.example.com'
     
     # Add any paths that contain static files, e.g, for https://www.example.com/images/, add '/images/'.
     # The leading and trailing slashes are required.
+    # Separate multiple paths with commas, e.g., ['/images/', '/assets/']
     static_asset_paths = ['/images/']
+
+    # Create output_dir if necessary.
+    try:
+        os.mkdir(output_dir)
+    except FileExistsError:
+        pass
 
     # Output files.
     posts_with_code_file = os.path.join(output_dir, 'posts-with-code.txt')
