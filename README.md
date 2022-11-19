@@ -12,7 +12,7 @@ These scripts will help you migrate a [Jekyll](https://jekyllrb.com) blog to [Mi
 1. [Python 3](https://www.python.org) (tested on Python 3.9)
 2. [Pandoc](https://pandoc.org)
 3. [pypandoc](https://pypi.org/project/pypandoc/)
-4. [Requests](https://requests.readthedocs.io/en/latest/) (optional; see "Check for bad links" below)
+4. [Requests](https://requests.readthedocs.io/en/latest/) (optional; see [https://github.com/geofftaylor/jekyll-to-microblog#check-for-bad-links-optional](Check for bad links) below)
 
 ## Instructions
 
@@ -23,7 +23,7 @@ These scripts will help you migrate a [Jekyll](https://jekyllrb.com) blog to [Mi
 3. Install [Pandoc](https://pandoc.org).
 4. Open your preferred terminal app.
 4. `pip install pypandoc`
-5. `pip install requests` (optional; see "Check for bad links" below)
+5. `pip install requests` (optional; see [https://github.com/geofftaylor/jekyll-to-microblog#check-for-bad-links-optional](Check for bad links) below)
 
 ### Generate the JSON feed
 
