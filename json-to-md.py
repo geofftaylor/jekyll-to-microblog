@@ -30,14 +30,23 @@ def main():
     # This is the path in the generated _site folder, e.g., /Users/me/blog/_site/assets.
     # The script assumes that all static files live in subdirectories of /assets and
     # would live at, e.g., https://www.example.com/assets/.
+    # Empty directories or directories that only contain subdirectories
+    # are not added to static_asset_paths.
     static_root_path = None
     
     if static_root_path is not None:
         base = os.path.dirname(static_root_path)
         for root, dirs, files in os.walk(static_root_path):
             for d in dirs:
-                rel = os.path.relpath(os.path.join(root, d), base)
-                static_asset_paths.append(f'/{rel}/')
+                dir_path = os.path.join(root, d)
+                # Only add directories that directly contain at least one non-hidden file.
+                has_visible_files = any(
+                    not name.startswith('.') and os.path.isfile(os.path.join(dir_path, name))
+                    for name in os.listdir(dir_path)
+                )
+                if has_visible_files:
+                    rel = os.path.relpath(dir_path, base)
+                    static_asset_paths.append(f'/{rel}/')
                 
     # Create output_dir if necessary.
     try:
