@@ -14,11 +14,31 @@ def main():
     # Replace with your domain.
     full_domain = 'https://www.example.com'
     
+    # STATIC FILES
     # Add any paths that contain static files, e.g, for https://www.example.com/images/, add '/images/'.
     # The leading and trailing slashes are required.
     # Separate multiple paths with commas, e.g., ['/images/', '/assets/']
-    static_asset_paths = ['/images/']
-
+    # Alternatively, set static_root_path below. If static_root_path is set,
+    # the script will walk static_root_path, find all of its subdirectories,
+    # and add them to static_asset_paths. It will add to anything you manually
+    # add to static_asset_paths, so you should generally leave this as an empty list
+    # if using static_root_path.
+    static_asset_paths = []
+    
+    # If all of your static files live under a common root,
+    # add the absolute path to that root directory here.
+    # This is the path in the generated _site folder, e.g., /Users/me/blog/_site/assets.
+    # The script assumes that all static files live in subdirectories of /assets and
+    # would live at, e.g., https://www.example.com/assets/.
+    static_root_path = None
+    
+    if static_root_path is not None:
+        base = os.path.dirname(static_root_path)
+        for root, dirs, files in os.walk(static_root_path):
+            for d in dirs:
+                rel = os.path.relpath(os.path.join(root, d), base)
+                static_asset_paths.append(f'/{rel}/')
+                
     # Create output_dir if necessary.
     try:
         os.mkdir(output_dir)
