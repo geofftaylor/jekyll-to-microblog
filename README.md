@@ -35,6 +35,7 @@ These scripts will help you migrate a [Jekyll](https://jekyllrb.com) blog to [Mi
 1. `json_file = '/<Jekyll root>/_site/feed-all.json'`: Change `<Jekyll root>` to the root of your Jekyll directory.
 2. `output_dir = '/<Jekyll root>/_ToMicroBlog'`: Change `<Jekyll root>` to the root of your Jekyll directory.
 3. `static_asset_paths = ['/images/']`: Add paths to static assets (e.g., images). Make sure you include leading and trailing slashes. Separate multiple paths with commas, e.g., `['/images/', '/assets/']`
+4. Alternatively, if all of your static files live under a common root under `_site`, set `static_root_path` to the absolute path of that root directory, e.g., `'/<Jekyll root>/_site/assets'`.
 
 ### Convert JSON to Markdown
 
